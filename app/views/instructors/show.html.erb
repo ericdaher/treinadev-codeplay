@@ -1,0 +1,10 @@
+<%= image_tag @instructor.profile_picture %>
+<h1><%= @instructor.name %></h1>
+<dl>
+  <dt>Email</dt>
+  <dd><%= @instructor.email %></dd>
+  <dt>Biografia</dt>
+  <dd><%= @instructor.bio %></dd>
+</dl>
+
+<%= link_to 'Voltar', instructors_path %>

@@ -22,6 +22,8 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
+# Ignore local storage
+/storage/*
 
 /public/assets
 .byebug_history

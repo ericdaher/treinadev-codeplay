@@ -1,0 +1,8 @@
+<% if @instructors.empty? %>
+  <h1>Nenhum professor cadastrado</h1>
+<% end %>
+
+<% @instructors.each do |instructor| %>
+  <h1><%= link_to instructor.name, instructor %></h1>
+  <p><%= instructor.bio %><p>
+<% end %>
