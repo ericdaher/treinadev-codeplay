@@ -1,4 +1,8 @@
 <%= form_with model: @course do |form| %>
+  <% @course.errors.each do |error| %>
+    <%= error.full_message %>
+  <% end %>
+
   <%= form.label :name, 'Nome' %><br>
   <%= form.text_field :name %>
   <%= form.label :description, 'Descrição' %><br>
