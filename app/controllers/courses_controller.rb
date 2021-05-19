@@ -1,10 +1,11 @@
 class CoursesController < ApplicationController
+  before_action :set_course, only: %i[show edit update]
+
   def index
     @courses = Course.all
   end
 
   def show
-    @course = Course.find(params[:id])
   end
 
   def new
@@ -20,6 +21,17 @@ class CoursesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @course.update(course_params)
+      redirect_to @course, notice: 'Curso atualizado com sucesso'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def course_params
@@ -27,5 +39,9 @@ class CoursesController < ApplicationController
       :id, :name, :description,
       :code, :price, :enrollment_deadline
     )
+  end
+
+  def set_course
+    @course = Course.find(params[:id])
   end
 end
