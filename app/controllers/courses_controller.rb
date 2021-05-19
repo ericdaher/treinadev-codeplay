@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: %i[show edit update]
+  before_action :set_course, only: %i[show edit update destroy]
 
   def index
     @courses = Course.all
@@ -30,6 +30,11 @@ class CoursesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @course.destroy
+    redirect_to courses_path, notice: 'Curso excluído com sucesso'
   end
 
   private
