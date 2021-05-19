@@ -19,6 +19,7 @@ describe 'Admin registers courses' do
     fill_in 'Código', with: 'RUBYONRAILS'
     fill_in 'Preço', with: '30'
     fill_in 'Data limite de matrícula', with: '22/12/2033'
+    attach_file 'Banner', Rails.root.join('spec/fixtures/ruby_on_rails.png')
     click_on 'Criar curso'
 
     expect(current_path).to eq(course_path(Course.last))
@@ -27,6 +28,7 @@ describe 'Admin registers courses' do
     expect(page).to have_content('RUBYONRAILS')
     expect(page).to have_content('R$ 30,00')
     expect(page).to have_content('22/12/2033')
+    expect(page).to have_css('img[src*="ruby_on_rails.png"]')
     expect(page).to have_link('Voltar')
   end
 

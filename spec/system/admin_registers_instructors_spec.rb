@@ -17,7 +17,7 @@ describe 'Admin registers instructors' do
     fill_in 'Nome', with: 'Peter Capaldi'
     fill_in 'Email', with: 'peter@capaldi.com'
     fill_in 'Descrição', with: 'Twelfth Doctor'
-    attach_file('Foto de Perfil', 'spec/fixtures/capaldi.jpg')
+    attach_file 'Foto de Perfil', Rails.root.join('spec/fixtures/capaldi.jpg')
     click_on 'Criar professor'
 
     expect(current_path).to eq(instructor_path(Instructor.last))

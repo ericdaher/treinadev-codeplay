@@ -1,3 +1,6 @@
+<% if @course.banner.attached? %>
+  <%= image_tag @course.banner %>
+<% end %>
 <h1><%= @course.name %></h1>
 <dl>
   <dt>Descrição</dt>

@@ -18,7 +18,7 @@ describe 'Admin edits instructors' do
     fill_in 'Nome', with: 'Clara Oswald'
     fill_in 'Email', with: 'clara@oswald.com'
     fill_in 'Descrição', with: 'Impossible Girl'
-    attach_file('Foto de Perfil', 'spec/fixtures/clara.jpg')
+    attach_file 'Foto de Perfil', Rails.root.join('spec/fixtures/clara.jpg')
     click_on 'Salvar professor'
 
     expect(current_path).to eq(instructor_path(Instructor.last))
