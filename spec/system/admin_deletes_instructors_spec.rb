@@ -8,15 +8,11 @@ describe 'Admin view instructors' do
     clara = Instructor.create!(name: 'Clara Oswald', email: 'clara@oswald.com',
                                bio: 'Impossible Girl')
 
-    capaldi.profile_picture.attach(
-      io: File.open('spec/fixtures/capaldi.jpg'),
-      filename: 'capaldi.jpg'
-    )
+    capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
+                                   filename: 'capaldi.jpg' )
 
-    clara.profile_picture.attach(
-      io: File.open('spec/fixtures/clara.jpg'),
-      filename: 'clara.jpg'
-    )
+    clara.profile_picture.attach(io: File.open('spec/fixtures/clara.jpg'),
+                                 filename: 'clara.jpg')
 
     visit root_path
     click_on 'Professores'
@@ -33,5 +29,6 @@ describe 'Admin view instructors' do
     expect(page).to_not have_content('Twelfth Doctor')
     expect(page).to have_content('Clara Oswald')
     expect(page).to have_content('Impossible Girl')
+    expect(page).to have_content('Professor excluído com sucesso')
   end
 end

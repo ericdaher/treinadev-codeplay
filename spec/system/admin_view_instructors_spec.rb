@@ -8,15 +8,11 @@ describe 'Admin view instructors' do
     clara = Instructor.create!(name: 'Clara Oswald', email: 'clara@oswald.com',
                                bio: 'Impossible Girl')
 
-    capaldi.profile_picture.attach(
-      io: File.open('spec/fixtures/capaldi.jpg'),
-      filename: 'capaldi.jpg'
-    )
+    capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
+                                   filename: 'capaldi.jpg' )
 
-    clara.profile_picture.attach(
-      io: File.open('spec/fixtures/clara.jpg'),
-      filename: 'clara.jpg'
-    )
+    clara.profile_picture.attach(io: File.open('spec/fixtures/clara.jpg'),
+                                 filename: 'clara.jpg')
 
     visit root_path
     click_on 'Professores'
@@ -30,11 +26,9 @@ describe 'Admin view instructors' do
   it 'with details' do
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')
-  
-    capaldi.profile_picture.attach(
-      io: File.open('spec/fixtures/capaldi.jpg'),
-      filename: 'capaldi.jpg'
-    )
+
+    capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
+                                   filename: 'capaldi.jpg' )
   
     visit root_path
     click_on 'Professores'
@@ -57,10 +51,8 @@ describe 'Admin view instructors' do
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')
 
-    capaldi.profile_picture.attach(
-      io: File.open('spec/fixtures/capaldi.jpg'),
-      filename: 'capaldi.jpg'
-    )
+    capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
+                                   filename: 'capaldi.jpg' )
 
     visit root_path
     click_on 'Cursos'

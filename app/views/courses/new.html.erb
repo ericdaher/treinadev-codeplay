@@ -1,20 +1,3 @@
-<%= form_with model: @course do |form| %>
-  <% @course.errors.each do |error| %>
-    <%= error.full_message %>
-  <% end %>
+<h1>Criar curso</h1>
 
-  <%= form.label :name, 'Nome' %><br>
-  <%= form.text_field :name %>
-  <%= form.label :description, 'Descrição' %><br>
-  <%= form.text_field :description %>
-  <%= form.label :code, 'Código' %><br>
-  <%= form.text_field :code %>
-  <%= form.label :price, 'Preço' %><br>
-  <%= form.number_field :price %>
-  <%= form.label :enrollment_deadline, 'Data limite de matrícula' %><br>
-  <%= form.date_field :enrollment_deadline %>
-  <%= form.label :banner, 'Banner' %><br>
-  <%= form.file_field :banner %>
-
-  <%= form.submit 'Criar curso' %>
-<% end %>
+<%= render partial: 'form', locals: { course: @course, button_text: 'Criar curso' } %>

@@ -1,16 +1,3 @@
-<%= form_with model: @instructor do |form| %>
-  <% @instructor.errors.each do |error| %>
-    <%= error.full_message %>
-  <% end %>
+<h1>Criar professor</h1>
 
-  <%= form.label :name, 'Nome' %><br>
-  <%= form.text_field :name %>
-  <%= form.label :email, 'Email' %><br>
-  <%= form.text_field :email %>
-  <%= form.label :bio, 'Descrição' %><br>
-  <%= form.text_area :bio %>
-  <%= form.label :profile_picture, 'Foto de Perfil' %><br>
-  <%= form.file_field :profile_picture %>
-
-  <%= form.submit 'Criar professor' %>
-<% end %>
+<%= render partial: 'form', locals: { instructor: @instructor, button_text: 'Criar professor' } %>

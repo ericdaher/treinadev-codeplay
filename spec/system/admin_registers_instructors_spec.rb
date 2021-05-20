@@ -45,10 +45,8 @@ describe 'Admin registers instructors' do
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')
 
-    capaldi.profile_picture.attach(
-      io: File.open('spec/fixtures/capaldi.jpg'),
-      filename: 'capaldi.jpg'
-    )
+    capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
+                                   filename: 'capaldi.jpg' )
 
     visit root_path
     click_on 'Professores'
