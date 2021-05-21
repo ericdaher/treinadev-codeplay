@@ -26,7 +26,7 @@ class CoursesController < ApplicationController
 
   def update
     if @course.update(course_params)
-      redirect_to @course, notice: 'Curso atualizado com sucesso'
+      redirect_to @course, notice: t('.success')
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class CoursesController < ApplicationController
 
   def destroy
     @course.destroy
-    redirect_to courses_path, notice: 'Curso excluído com sucesso'
+    redirect_to courses_path, notice: t('.success')
   end
 
   private
