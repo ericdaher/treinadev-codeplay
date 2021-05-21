@@ -3,4 +3,10 @@ class Instructor < ApplicationRecord
 
   validates :name, :email, presence: true
   validates :email, uniqueness: true
+
+  has_many :courses
+
+  def display_name
+    "#{name} (#{email})"
+  end
 end

@@ -8,6 +8,8 @@
   <%= form.text_field :name %>
   <%= form.label :description %>
   <%= form.text_field :description %>
+  <%= form.label :instructor_id, 'Professor' %>
+  <%= form.collection_select :instructor_id, instructors, :id, :display_name %>
   <%= form.label :code %>
   <%= form.text_field :code %>
   <%= form.label :price %>

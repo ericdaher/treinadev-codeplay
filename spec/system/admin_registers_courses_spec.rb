@@ -10,12 +10,16 @@ describe 'Admin registers courses' do
   end
 
   it 'successfully' do
+    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
+                                 bio: 'Twelfth Doctor')
+
     visit root_path
     click_on 'Cursos'
     click_on 'Registrar um curso'
 
     fill_in 'Nome', with: 'Ruby on Rails'
     fill_in 'Descrição', with: 'Um curso de Ruby on Rails'
+    select 'Peter Capaldi (peter@capaldi.com)', from: 'Professor'
     fill_in 'Código', with: 'RUBYONRAILS'
     fill_in 'Preço', with: '30'
     fill_in 'Data limite de matrícula', with: '22/12/2033'
@@ -33,10 +37,6 @@ describe 'Admin registers courses' do
   end
 
   it 'and attributes cannot be blank' do
-    Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10,
-                   enrollment_deadline: '22/12/2033')
-
     visit root_path
     click_on 'Cursos'
     click_on 'Registrar um curso'
@@ -48,11 +48,15 @@ describe 'Admin registers courses' do
     click_on 'Criar Curso'
 
     expect(page).to have_content('não pode ficar em branco', count: 3)
+    expect(page).to have_content('Professor é obrigatório')
   end
 
   it 'and code must be unique' do
+    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
+                                 bio: 'Twelfth Doctor')
+
     Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10,
+                   code: 'RUBYBASIC', price: 10, instructor: capaldi,
                    enrollment_deadline: '22/12/2033')
 
     visit root_path

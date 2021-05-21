@@ -2,8 +2,11 @@ require 'rails_helper'
 
 describe 'Admin edits courses' do
   it 'successfully' do
+    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
+                                 bio: 'Twelfth Doctor')
+
     course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                            code: 'RUBYBASIC', price: 10,
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
                             enrollment_deadline: '22/12/2033')
 
     visit course_path(course)
@@ -21,5 +24,24 @@ describe 'Admin edits courses' do
     expect(page).to have_text('R$ 30,00')
     expect(page).to have_text(Date.current.strftime('%d/%m/%Y'))
     expect(page).to have_text('Curso atualizado com sucesso')
+  end
+
+  it 'and changes instructor' do
+    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
+                                 bio: 'Twelfth Doctor')
+
+    clara = Instructor.create!(name: 'Clara Oswald', email: 'clara@oswald.com',
+                               bio: 'Impossible Girl')
+
+    course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: '22/12/2033')
+
+    visit course_path(course)
+    click_on 'Editar'
+    select 'Clara Oswald (clara@oswald.com)', from: 'Professor'
+    click_on 'Atualizar Curso'
+
+    expect(page).to have_text('Clara Oswald')
   end
 end 
