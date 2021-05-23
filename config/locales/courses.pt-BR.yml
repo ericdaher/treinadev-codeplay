@@ -4,11 +4,11 @@ pt-BR:
     index:
       empty: Nenhum curso disponível
       register: Registrar um curso
-    new:
-      title: Registrar um curso
     show:
       edit: Editar um curso
       destroy: Excluir um curso
+    new:
+      title: Registrar um curso
     edit:
       title: Editar
     update:

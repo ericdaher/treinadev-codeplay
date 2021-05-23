@@ -17,7 +17,7 @@ describe 'Admin edits instructors' do
     fill_in 'Email', with: 'clara@oswald.com'
     fill_in 'Descrição', with: 'Impossible Girl'
     attach_file 'Foto de Perfil', Rails.root.join('spec/fixtures/clara.jpg')
-    click_on 'Salvar'
+    click_on 'Atualizar Professor'
 
     expect(current_path).to eq(instructor_path(Instructor.last))
     expect(page).to have_css("img[src*='clara.jpg']")
@@ -43,7 +43,7 @@ describe 'Admin edits instructors' do
     fill_in 'Nome', with: ''
     fill_in 'Email', with: ''
     fill_in 'Descrição', with: ''
-    click_on 'Salvar'
+    click_on 'Atualizar Professor'
 
     expect(page).to have_content('não pode ficar em branco', count: 2)
   end
@@ -67,7 +67,7 @@ describe 'Admin edits instructors' do
     click_on 'Editar'
 
     fill_in 'Email', with: 'clara@oswald.com'
-    click_on 'Salvar'
+    click_on 'Atualizar Professor'
 
     expect(page).to have_content('já está em uso')
   end

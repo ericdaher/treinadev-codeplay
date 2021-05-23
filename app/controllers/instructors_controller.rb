@@ -26,7 +26,7 @@ class InstructorsController < ApplicationController
 
   def update
     if @instructor.update(instructor_params)
-      redirect_to @instructor, notice: 'Professor atualizado com sucesso'
+      redirect_to @instructor, notice: t('.success')
     else
       render :new
     end
@@ -34,7 +34,7 @@ class InstructorsController < ApplicationController
 
   def destroy
     @instructor.destroy
-    redirect_to instructors_path, notice: 'Professor excluído com sucesso'
+    redirect_to instructors_path, notice: t('.success')
   end
 
   private

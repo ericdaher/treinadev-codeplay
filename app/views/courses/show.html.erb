@@ -6,7 +6,7 @@
 <dl>
   <dt><%= Course.human_attribute_name(:description) %></dt>
   <dd><%= @course.description %></dd>
-  <dt>Professor</dt>
+  <dt><%= Course.human_attribute_name(:instructor) %></dt>
   <dd><%= @course.instructor.name %></dd>
   <dt><%= Course.human_attribute_name(:code) %></dt>
   <dd><%= @course.code %></dd>

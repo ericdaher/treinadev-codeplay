@@ -18,7 +18,7 @@ describe 'Admin registers instructors' do
     fill_in 'Email', with: 'peter@capaldi.com'
     fill_in 'Descrição', with: 'Twelfth Doctor'
     attach_file 'Foto de Perfil', Rails.root.join('spec/fixtures/capaldi.jpg')
-    click_on 'Criar professor'
+    click_on 'Criar Professor'
 
     expect(current_path).to eq(instructor_path(Instructor.last))
     expect(page).to have_css("img[src*='capaldi.jpg']")
@@ -36,7 +36,7 @@ describe 'Admin registers instructors' do
     fill_in 'Nome', with: ''
     fill_in 'Email', with: ''
     fill_in 'Descrição', with: ''
-    click_on 'Criar professor'
+    click_on 'Criar Professor'
 
     expect(page).to have_content('não pode ficar em branco', count: 2)
   end
@@ -52,7 +52,7 @@ describe 'Admin registers instructors' do
     click_on 'Professores'
     click_on 'Registrar um Professor'
     fill_in 'Email', with: 'peter@capaldi.com'
-    click_on 'Criar professor'
+    click_on 'Criar Professor'
 
     expect(page).to have_content('já está em uso')
   end

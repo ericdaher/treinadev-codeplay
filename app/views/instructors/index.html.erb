@@ -1,5 +1,5 @@
 <% if @instructors.empty? %>
-  <h1>Nenhum professor cadastrado</h1>
+  <h1><%= t('.empty') %></h1>
 <% end %>
 
 <% @instructors.each do |instructor| %>
@@ -7,5 +7,5 @@
   <p><%= instructor.bio %><p>
 <% end %>
 
-<%= link_to 'Registrar um Professor', new_instructor_path %>
-<%= link_to 'Voltar', root_path %>
+<%= link_to t('.register'), new_instructor_path %>
+<%= link_to t('helpers.button.back'), root_path %>

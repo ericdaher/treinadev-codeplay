@@ -1,0 +1,26 @@
+---
+pt-BR:
+  instructors:
+    index:
+      empty: Nenhum professor cadastrado
+      register: Registrar um Professor
+    show:
+      edit: Editar
+      destroy: Excluir
+    new:
+      title: Criar professor
+    edit:
+      title: Editar
+    update:
+      success: Professor atualizado com sucesso
+    destroy:
+      success: Professor excluído com sucesso
+  activerecord:
+    models:
+      instructor: Professor
+    attributes:
+      instructor:
+        name: Nome
+        email: Email
+        bio: Descrição
+        profile_picture: Foto de Perfil

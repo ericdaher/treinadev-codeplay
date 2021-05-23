@@ -4,12 +4,12 @@
 
 <h1><%= @instructor.name %></h1>
 <dl>
-  <dt>Email</dt>
+  <dt><%= Instructor.human_attribute_name(:email) %></dt>
   <dd><%= @instructor.email %></dd>
-  <dt>Biografia</dt>
+  <dt><%= Instructor.human_attribute_name(:bio) %></dt>
   <dd><%= @instructor.bio %></dd>
 </dl>
 
-<%= link_to 'Voltar', instructors_path %>
-<%= link_to 'Editar', edit_instructor_path(@instructor) %>
-<%= link_to 'Excluir', instructor_path(@instructor), method: :delete %>
+<%= link_to t('helpers.button.back'), instructors_path %>
+<%= link_to t('.edit'), edit_instructor_path(@instructor) %>
+<%= link_to t('.destroy'), instructor_path(@instructor), method: :delete %>
