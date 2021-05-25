@@ -7,6 +7,7 @@ pt-BR:
     show:
       edit: Editar um curso
       destroy: Excluir um curso
+      register_class: Registrar uma aula
     new:
       title: Registrar um curso
     edit:

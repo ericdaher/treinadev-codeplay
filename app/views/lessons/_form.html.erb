@@ -1,0 +1,11 @@
+<%= form_with model: [course, lesson] do |form| %>
+
+  <%= form.label :name, 'Nome' %>
+  <%= form.text_field :name %>
+  <%= form.label :duration, 'Duração' %>
+  <%= form.number_field :duration %>
+  <%= form.label :description, 'Descrição' %>
+  <%= form.text_area :description %>
+
+  <%= form.submit 'Criar Aula' %>
+<% end %>

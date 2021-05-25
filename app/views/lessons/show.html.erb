@@ -1,0 +1,9 @@
+<h1><%= @lesson.name %></h1>
+<dl>
+  <dt>Descrição</dt>
+  <dd><%= @lesson.description %></dd>
+  <dt>Duração</dt>
+  <dd><%= t('lesson.duration', count: @lesson.duration) %></dd>
+</dl>
+
+<%= link_to t('helpers.button.back'), course_path(@course) %>
