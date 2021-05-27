@@ -11,14 +11,23 @@
   </head>
 
   <body>
+    <nav>
+      <% if user_signed_in? %>
+        <%= current_user.email %>
+        <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Registrar-me', new_user_registration_path %>
+        <%= link_to 'Entrar', new_user_session_path %>
+      <% end %>
+    </nav>
     <% if notice %>
       <div>
-        <%= notice %>
+        <p class="notice"><%= notice %></p>
       </div>
     <% end %>
     <% if alert %>
       <div>
-        <%= alert %>
+        <p class="alert"><%= alert %></p>
       </div>
     <% end %>
     <%= yield %>
