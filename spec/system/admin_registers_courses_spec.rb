@@ -67,4 +67,13 @@ describe 'Admin registers courses' do
 
     expect(page).to have_content('já está em uso')
   end
+
+  it 'cancels and go back' do
+    visit root_path
+    click_on 'Cursos'
+    click_on 'Registrar um curso'
+    click_on 'Voltar'
+    
+    expect(current_path).to eq(courses_path)
+  end
 end

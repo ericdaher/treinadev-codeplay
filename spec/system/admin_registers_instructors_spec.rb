@@ -5,14 +5,14 @@ describe 'Admin registers instructors' do
     visit root_path
     click_on 'Professores'
 
-    expect(page).to have_link('Registrar um Professor',
+    expect(page).to have_link('Registrar um professor',
                               href: new_instructor_path)
   end
 
   it 'successfully' do
     visit root_path
     click_on 'Professor'
-    click_on 'Registrar um Professor'
+    click_on 'Registrar um professor'
 
     fill_in 'Nome', with: 'Peter Capaldi'
     fill_in 'Email', with: 'peter@capaldi.com'
@@ -31,7 +31,7 @@ describe 'Admin registers instructors' do
   it 'and attributes cannot be blank' do
     visit root_path
     click_on 'Professores'
-    click_on 'Registrar um Professor'
+    click_on 'Registrar um professor'
     
     fill_in 'Nome', with: ''
     fill_in 'Email', with: ''
@@ -50,10 +50,19 @@ describe 'Admin registers instructors' do
 
     visit root_path
     click_on 'Professores'
-    click_on 'Registrar um Professor'
+    click_on 'Registrar um professor'
     fill_in 'Email', with: 'peter@capaldi.com'
     click_on 'Criar Professor'
 
     expect(page).to have_content('já está em uso')
+  end
+
+  it 'cancels and go back' do
+    visit root_path
+    click_on 'Professores'
+    click_on 'Registrar um professor'
+    click_on 'Voltar'
+    
+    expect(current_path).to eq(instructors_path)
   end
 end

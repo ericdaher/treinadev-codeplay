@@ -71,4 +71,17 @@ describe 'Admin edits instructors' do
 
     expect(page).to have_content('já está em uso')
   end
+
+  it 'cancels and go back' do
+    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
+                                 bio: 'Twelfth Doctor')
+
+    visit root_path
+    click_on 'Professores'
+    click_on 'Peter Capaldi'
+    click_on 'Editar'
+    click_on 'Voltar'
+    
+    expect(current_path).to eq(instructor_path(capaldi))
+  end
 end

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TreinadevCodeplay</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><%= content_for?(:title) ? yield(:title) : "Codeplay" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Codeplay" %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,15 +12,9 @@
   </head>
 
   <body>
-    <nav>
-      <% if user_signed_in? %>
-        <%= current_user.email %>
-        <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Registrar-me', new_user_registration_path %>
-        <%= link_to 'Entrar', new_user_session_path %>
-      <% end %>
-    </nav>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
     <% if notice %>
       <div>
         <p class="notice"><%= notice %></p>
@@ -30,6 +25,10 @@
         <p class="alert"><%= alert %></p>
       </div>
     <% end %>
-    <%= yield %>
+    <main role="main">
+      <div class="container px-4 mt-3 md-3">
+        <%= content_for?(:content) ? yield(:content) : yield %>
+      </div>
+    </main>
   </body>
 </html>

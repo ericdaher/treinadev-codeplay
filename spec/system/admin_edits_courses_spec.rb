@@ -44,4 +44,21 @@ describe 'Admin edits courses' do
 
     expect(page).to have_text('Clara Oswald')
   end
+
+  it 'cancels and go back' do
+    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
+                                 bio: 'Twelfth Doctor')
+
+    course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: '22/12/2033')
+
+    visit root_path
+    click_on 'Cursos'
+    click_on 'Ruby'
+    click_on 'Editar'
+    click_on 'Voltar'
+    
+    expect(current_path).to eq(course_path(course))
+  end
 end 

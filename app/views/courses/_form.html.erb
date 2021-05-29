@@ -4,20 +4,35 @@
 
 <%= form_with model: course do |form| %>
 
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <%= form.label :description %>
-  <%= form.text_field :description %>
-  <%= form.label :instructor_id, 'Professor' %>
-  <%= form.collection_select :instructor_id, instructors, :id, :display_name %>
-  <%= form.label :code %>
-  <%= form.text_field :code %>
-  <%= form.label :price %>
-  <%= form.number_field :price %>
-  <%= form.label :enrollment_deadline %>
-  <%= form.date_field :enrollment_deadline %>
-  <%= form.label :banner %>
-  <%= form.file_field :banner %>
+  <div class="mb-3">
+  <%= form.label :name, class: 'form-label' %>
+  <%= form.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+  <%= form.label :description, class: 'form-label' %>
+  <%= form.text_field :description, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+  <%= form.label :instructor_id, 'Professor', class: 'form-label' %>
+  <%= form.collection_select :instructor_id, instructors, :id, :display_name, {}, { class: 'form-select' } %>
+  </div>
+  <div class="mb-3">
+  <%= form.label :code, class: 'form-label' %>
+  <%= form.text_field :code, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+  <%= form.label :price, class: 'form-label' %>
+  <%= form.number_field :price, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+  <%= form.label :enrollment_deadline, class: 'form-label' %>
+  <%= form.date_field :enrollment_deadline, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+  <%= form.label :banner, class: 'form-label' %>
+  <%= form.file_field :banner, class: 'form-control' %>
+  </div>
 
-  <%= form.submit %>
+  <%= form.submit class: 'btn btn-primary' %>
+  <%= link_to t('helpers.button.back'), back_path, class: 'btn btn-secondary' %>
 <% end %>
