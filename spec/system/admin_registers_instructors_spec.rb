@@ -56,4 +56,13 @@ describe 'Admin registers instructors' do
 
     expect(page).to have_content('já está em uso')
   end
+
+  it 'cancels and go back' do
+    visit root_path
+    click_on 'Professores'
+    click_on 'Registrar um professor'
+    click_on 'Voltar'
+    
+    expect(current_path).to eq(instructors_path)
+  end
 end

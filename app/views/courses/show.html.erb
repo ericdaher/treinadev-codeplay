@@ -22,7 +22,7 @@
 <%= link_to t('.edit'), edit_course_path(@course), class: 'btn btn-primary' %>
 <%= link_to t('.destroy'), course_path(@course), method: :delete, class: 'btn btn-danger' %>
 
-<div id="lessons" class="mt-3">
+<div id="lessons" class="mt-3 mb-3">
   <% if @course.lessons.empty? %>
     <h5>Nenhuma aula disponível</h5>
   <% else %>
