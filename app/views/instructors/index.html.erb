@@ -1,11 +1,28 @@
 <% if @instructors.empty? %>
-  <h1><%= t('.empty') %></h1>
+  <h3><%= t('.empty') %></h3>
+<% else %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h3 class="card-title">Professores</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @instructors.each do |instructor| %>
+            <tr>
+              <td><%= link_to instructor.name, instructor %></td>
+              <td><%= instructor.bio %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 <% end %>
 
-<% @instructors.each do |instructor| %>
-  <h1><%= link_to instructor.name, instructor %></h1>
-  <p><%= instructor.bio %><p>
-<% end %>
-
-<%= link_to t('.register'), new_instructor_path %>
-<%= link_to t('helpers.button.back'), root_path %>
+<%= link_to t('.register'), new_instructor_path, class: 'btn btn-primary' %>
+<%= link_to t('helpers.button.back'), root_path, class: 'btn btn-secondary' %>

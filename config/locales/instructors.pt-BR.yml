@@ -3,7 +3,7 @@ pt-BR:
   instructors:
     index:
       empty: Nenhum professor cadastrado
-      register: Registrar um Professor
+      register: Registrar um professor
     show:
       edit: Editar
       destroy: Excluir

@@ -1,12 +1,30 @@
 <% if @courses.empty? %>
-  <h1><%= t('.empty') %></h1>
+  <h3><%= t('.empty') %></h3>
+<% else %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h3 class="card-title">Cursos</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @courses.each do |course| %>
+            <tr>
+              <td><%= link_to course.name, course %></td>
+              <td><%= course.description %></td>
+              <td><%= number_to_currency course.price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 <% end %>
 
-<% @courses.each do |course| %>
-  <h1><%= link_to course.name, course %></h1>
-  <p><%= course.description %></p>
-  <p><%= number_to_currency course.price %></p>
-<% end %>
-
-<%= link_to t('.register'), new_course_path %>
-<%= link_to t('helpers.button.back'), root_path %>
+<%= link_to t('.register'), new_course_path, class: 'btn btn-primary' %>
+<%= link_to t('helpers.button.back'), root_path, class: 'btn btn-secondary' %>

@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div class="container-xxl flex-wrap flex-md-nowrap">
+    <%= link_to 'Codeplay', root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-nav">
+        <%= link_to 'Home', root_path, class: class_names('nav-link', { active: current_page?(root_path) }), 
+            aria: current_page?(root_path) ? { current: "page" } : {} %>
+        <%= link_to 'Cursos', courses_path, class: class_names('nav-link', { active: current_page?(courses_path) }),
+            aria: current_page?(courses_path) ? { current: "page" } : {} %>
+        <%= link_to 'Professores', instructors_path, class: class_names('nav-link', { active: current_page?(instructors_path) }),
+            aria: current_page?(instructors_path) ? { current: "page" } : {} %>
+      </div>
+      <div class="navbar-nav nav-item dropdown ms-auto">
+        <%= link_to 'Acesso', '#', class: 'nav-link dropdown-toggle', id: 'navbarDropdownMenuLink', role: 'button', 'data-bs-toggle': 'dropdown', aria: { expanded: 'false' } %>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+          <% if user_signed_in? %>
+            <li><%= link_to current_user.email, '#', class: 'dropdown-item' %></li>
+            <li><%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
+          <% else %>
+            <li><%= link_to 'Registrar-me', new_user_registration_path, class: 'dropdown-item' %></li>
+            <li><%= link_to 'Entrar', new_user_session_path, class: 'dropdown-item' %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
