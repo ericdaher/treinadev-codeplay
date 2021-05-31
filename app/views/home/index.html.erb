@@ -1,1 +1,25 @@
-<h3>Boas vindas ao sistema de gestão de cursos e aulas</h3>
+<h1>Boas vindas ao sistema de gestão de cursos e aulas</h1>
+
+<div class="card mb-3">
+  <div class="card-body">
+    <h3 class="card-title">Cursos Disponíveis</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Preço</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @courses.each do |course| %>
+          <tr>
+            <td><%= link_to course.name, course %></td>
+            <td><%= course.description %></td>
+            <td><%= number_to_currency course.price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

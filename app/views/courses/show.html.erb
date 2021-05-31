@@ -19,6 +19,13 @@
 </dl>
 
 <%= link_to t('helpers.button.back'), courses_path, class: 'btn btn-secondary' %>
+<% if user_signed_in? %>
+  <% unless current_user.courses.include?(@course) %>
+    <%= link_to 'Comprar', enroll_course_path(@course), method: :post, class: 'btn btn-primary' %>
+  <% end %>
+<% else %> 
+  <p>Faça <%= link_to 'login', new_user_session_path %> para comprar este curso</p>
+<% end %>
 <%= link_to t('.edit'), edit_course_path(@course), class: 'btn btn-primary' %>
 <%= link_to t('.destroy'), course_path(@course), method: :delete, class: 'btn btn-danger' %>
 
@@ -39,7 +46,11 @@
           <tbody>
             <% @course.lessons.each do |lesson| %>
               <tr>
-                <td><%= link_to lesson.name, course_lesson_path(@course, lesson) %></td>
+                <% if current_user && current_user.courses.include?(@course) %>
+                  <td><%= link_to lesson.name, course_lesson_path(@course, lesson) %></td>
+                <% else %>
+                  <td><%= lesson.name %></td>
+                <% end %>
                 <td><%= lesson.description %></td>
               </tr>
             <% end %>

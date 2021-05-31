@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :courses do 
     resources :lessons, only: %i[show new create]
+    post 'enroll', on: :member
+    get 'mine', on: :collection
   end
   resources :instructors
 end

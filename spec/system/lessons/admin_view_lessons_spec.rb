@@ -18,15 +18,17 @@ describe 'Admin view lessons' do
     Lesson.create!(name: 'Aula que não será mostrada', duration: 40, description: 'Descrição que não aparece', course: other_course)
 
     visit course_path(course)
-    expect(page).to have_link('Classes e Objetos')
+    expect(page).to have_text('Classes e Objetos')
     expect(page).to have_text('Orientação a Objetos em Ruby')
-    expect(page).to have_link('Monkey Patch')
+    expect(page).to have_text('Monkey Patch')
     expect(page).to have_text('Uma aula sobre Monkey Patch')
     expect(page).to_not have_text('Aula que não será mostrada')
     expect(page).to_not have_text('Descrição que não aparece')
   end
 
   it 'and view details' do
+    user = User.create!(email: 'peter@capaldi.com', password: '12345678')
+
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')
 
@@ -34,14 +36,16 @@ describe 'Admin view lessons' do
                             code: 'RUBYBASIC', price: 10, instructor: capaldi,
                             enrollment_deadline: '22/12/2033')
 
+    Enrollment.create!(user: user, course: course)
+
     Lesson.create!(name: 'Classes e Objetos I', duration: 0, description: 'Orientação a Objetos em Ruby - Parte I', course: course)
     Lesson.create!(name: 'Monkey Patch', duration: 1, description: 'Uma aula sobre Monkey Patch', course: course)
     Lesson.create!(name: 'Classes e Objetos III', duration: 20, description: 'Orientação a Objetos em Ruby - Parte III', course: course)
 
+    login_as user, scope: :user
     visit course_path(course)
     click_on 'Classes e Objetos I'  
 
-    puts current_path
     expect(page).to have_content('Classes e Objetos I')
     expect(page).to have_content('Orientação a Objetos em Ruby - Parte I')
     expect(page).to have_content('Sem duração')
@@ -49,7 +53,6 @@ describe 'Admin view lessons' do
     click_on 'Voltar'
     click_on 'Monkey Patch'
 
-    puts current_path
     expect(page).to have_content('Monkey Patch')
     expect(page).to have_content('Uma aula sobre Monkey Patch')
     expect(page).to have_content('1 minuto')

@@ -10,16 +10,23 @@ i = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com', bio: '
 i.profile_picture.attach(io: File.open(Rails.root.join('spec/fixtures/capaldi.jpg')), filename: 'capaldi.jpg' )
 puts 'Instrutor cadastrado'
 
-c = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10, instructor: i,
-                   enrollment_deadline: '22/12/2033')
+Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+               code: 'RUBYBASIC', price: 10, instructor: i,
+               enrollment_deadline: 1.day.ago)
+
+c = Course.create!(name: 'Ruby on Rails', description: 'Um curso de Ruby on Rails',
+                   code: 'RUBYRAILS', price: 20, instructor: i,
+                   enrollment_deadline: 3.months.from_now)
 c.banner.attach(io: File.open(Rails.root.join('spec/fixtures/ruby_on_rails.png')), filename: 'ruby_on_rails.png')
-puts 'Curso cadastrado'
+puts 'Cursos cadastrados'
 
 Lesson.create!(name: 'Classes e Objetos I', duration: 0, description: 'Orientação a Objetos em Ruby - Parte I', course: c)
 Lesson.create!(name: 'Monkey Patch', duration: 1, description: 'Uma aula sobre Monkey Patch', course: c)
 Lesson.create!(name: 'Classes e Objetos III', duration: 20, description: 'Orientação a Objetos em Ruby - Parte III', course: c)
 puts 'Aulas criadas'
 
-User.create!(email: 'peter@capaldi.com', password: '12345678')
+u = User.create!(email: 'estudante@codeplay.com', password: '12345678')
 puts 'Usuário criado'
+
+Enrollment.create!(user: u, course: c)
+puts 'Matrícula criada'

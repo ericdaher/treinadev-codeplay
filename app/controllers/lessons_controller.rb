@@ -2,7 +2,6 @@ class LessonsController < ApplicationController
   before_action :set_course, only: %i[show new create]
 
   def show
-    puts params
     @lesson = @course.lessons.find(params[:id])
   end
 

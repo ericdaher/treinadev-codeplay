@@ -1,0 +1,27 @@
+<% if @enrollments.empty? %>
+  <h3>Nenhum curso comprado</h3>
+<% else %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h3 class="card-title">Meus cursos</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Comprado em</th>
+            <th scope="col">Preço de compra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @enrollments.each do |enrollment| %>
+            <tr>
+              <td><%= link_to enrollment.course.name, enrollment.course %></td>
+              <td><%= l enrollment.created_at, format: :long %></td>
+              <td><%= number_to_currency enrollment.price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>
