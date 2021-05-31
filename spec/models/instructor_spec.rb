@@ -15,10 +15,8 @@ describe Instructor do
       capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                    bio: 'Twelfth Doctor')
 
-      capaldi.profile_picture.attach(
-        io: File.open('spec/fixtures/capaldi.jpg'),
-        filename: 'capaldi.jpg'
-      )
+      capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
+                                     filename: 'capaldi.jpg')
 
       instructor = Instructor.new(email: 'peter@capaldi.com')
 

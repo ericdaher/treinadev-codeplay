@@ -36,7 +36,7 @@ describe 'Admin view lessons' do
                             code: 'RUBYBASIC', price: 10, instructor: capaldi,
                             enrollment_deadline: '22/12/2033')
 
-    Enrollment.create!(user: user, course: course)
+    Enrollment.create!(user: user, course: course, price: course.price)
 
     Lesson.create!(name: 'Classes e Objetos I', duration: 0, description: 'Orientação a Objetos em Ruby - Parte I', course: course)
     Lesson.create!(name: 'Monkey Patch', duration: 1, description: 'Uma aula sobre Monkey Patch', course: course)

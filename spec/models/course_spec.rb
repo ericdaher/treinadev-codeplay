@@ -17,13 +17,21 @@ describe Course do
                                    bio: 'Twelfth Doctor')
 
       Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                    code: 'RUBYBASIC', price: 10, instructor: capaldi,
-                    enrollment_deadline: '22/12/2033')
+                     code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                     enrollment_deadline: '22/12/2033')
       course = Course.new(code: 'RUBYBASIC')
 
       course.valid?
 
       expect(course.errors[:code]).to include('já está em uso')
+    end
+
+    it 'price must be positive' do
+      course = Course.new(price: 0)
+
+      course.valid? 
+
+      expect(course.errors[:price]).to include('deve ser maior que 0')
     end
   end
 end
