@@ -17,7 +17,9 @@ pt-BR:
       success: Professor excluído com sucesso
   activerecord:
     models:
-      instructor: Professor
+      instructor:
+        one: Professor
+        other: Professores
     attributes:
       instructor:
         name: Nome

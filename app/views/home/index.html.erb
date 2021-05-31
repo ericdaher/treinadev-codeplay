@@ -1,14 +1,14 @@
-<h1>Boas vindas ao sistema de gestão de cursos e aulas</h1>
+<h1><%= t('home.title') %></h1>
 
 <div class="card mb-3">
   <div class="card-body">
-    <h3 class="card-title">Cursos Disponíveis</h3>
+    <h3 class="card-title"><%= t('home.available_courses') %></h3>
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Nome</th>
-          <th scope="col">Descrição</th>
-          <th scope="col">Preço</th>
+          <th scope="col"><%= Course.human_attribute_name('name') %></th>
+          <th scope="col"><%= Course.human_attribute_name('description') %></th>
+          <th scope="col"><%= Course.human_attribute_name('price') %></th>
         </tr>
       </thead>
       <tbody>

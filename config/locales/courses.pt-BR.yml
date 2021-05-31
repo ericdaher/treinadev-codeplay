@@ -8,6 +8,11 @@ pt-BR:
       edit: Editar
       destroy: Excluir
       register_class: Registrar uma aula
+      enroll: Comprar
+      login_message_html: "Faça %{login_path} para comprar este curso"
+      lessons:
+        empty: Nenhuma aula disponível
+        title: Aulas
     new:
       title: Registrar um curso
     edit:
@@ -16,9 +21,16 @@ pt-BR:
       success: Curso atualizado com sucesso
     destroy:
       success: Curso excluído com sucesso
+    mine:
+      empty: Nenhum curso disponível
+      title: Meus cursos
+      bought: Comprado em
+      price: Preço de compra
   activerecord:
     models:
-      course: Curso
+      course:
+        one: Curso
+        other: Cursos
     attributes:
       course:
         name: Nome

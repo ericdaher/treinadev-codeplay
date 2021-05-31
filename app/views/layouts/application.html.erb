@@ -16,13 +16,13 @@
       <%= render 'layouts/navigation' %>
     </header>
     <% if notice %>
-      <div>
-        <p class="notice"><%= notice %></p>
+      <div class="container px-4 mt-3 alert alert-warning">
+        <span class="notice"><%= notice %></span>
       </div>
     <% end %>
     <% if alert %>
-      <div>
-        <p class="alert"><%= alert %></p>
+      <div class="container px-4 mt-3 alert alert-danger">
+        <span class="alert"><%= alert %></span>
       </div>
     <% end %>
     <main role="main">

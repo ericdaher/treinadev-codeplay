@@ -13,7 +13,7 @@
   <%= form.text_field :description, class: 'form-control' %>
   </div>
   <div class="mb-3">
-  <%= form.label :instructor_id, 'Professor', class: 'form-label' %>
+  <%= form.label :instructor_id, Instructor.model_name.human, class: 'form-label' %>
   <%= form.collection_select :instructor_id, instructors, :id, :display_name, {}, { class: 'form-select' } %>
   </div>
   <div class="mb-3">

@@ -3,12 +3,12 @@
 <% else %>
   <div class="card mb-3">
     <div class="card-body">
-      <h3 class="card-title">Professores</h3>
+      <h3 class="card-title"><%= Instructor.model_name.human(count: 2) %></h3>
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Descrição</th>
+            <th scope="col"><%= Instructor.human_attribute_name('name') %></th>
+            <th scope="col"><%= Instructor.human_attribute_name('description') %></th>
           </tr>
         </thead>
         <tbody>

@@ -1,0 +1,10 @@
+---
+pt-BR:
+  home:
+    title: Boas vindas ao sistema de gestão de cursos e aulas
+    available_courses: Cursos Disponíveis
+  navbar:
+    access: Acesso
+    login: Entrar
+    logout: Sair
+    signin: Registrar

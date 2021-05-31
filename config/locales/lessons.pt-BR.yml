@@ -5,3 +5,13 @@ pt-BR:
       zero: Sem duração
       one: 1 minuto
       other: "%{count} minutos"
+  activerecord:
+    models:
+      lesson:
+        one: Aula
+        other: Aulas
+    attributes:
+      lesson:
+        name: Nome
+        description: Descrição
+        duration: Duração
