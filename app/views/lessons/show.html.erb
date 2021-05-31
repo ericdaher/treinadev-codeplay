@@ -1,8 +1,8 @@
 <h3><%= @lesson.name %></h3>
 <dl>
-  <dt>Descrição</dt>
+  <dt><%= Lesson.human_attribute_name('description') %></dt>
   <dd><%= @lesson.description %></dd>
-  <dt>Duração</dt>
+  <dt><%= Lesson.human_attribute_name('duration') %></dt>
   <dd><%= t('lesson.duration', count: @lesson.duration) %></dd>
 </dl>
 

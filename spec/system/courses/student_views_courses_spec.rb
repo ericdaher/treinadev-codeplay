@@ -23,7 +23,7 @@ describe 'Student view courses' do
   end
 
   it 'and view enrollment link' do
-    user = User.create!(email: 'peter@capaldi.com', password: '12345678')
+    user = User.create!(email: 'estudante@codeplay.com', password: '12345678')
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')
 
@@ -38,7 +38,19 @@ describe 'Student view courses' do
     expect(page).to have_link 'Comprar'
   end
 
-  xit 'and does not view enrollment link if deadline is over' do
+  it 'and does not view enrollment link if deadline is over' do
+    user = User.create!(email: 'estudante@codeplay.com', password: '12345678')
+    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
+                                 bio: 'Twelfth Doctor')
+
+    course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+                   code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                   enrollment_deadline: 1.day.ago)
+    
+    login_as user, scope: :user
+    visit course_path(course)
+
+    expect(page).to_not have_link 'Comprar'
   end
 
   it 'must be signed in to enroll' do
@@ -58,7 +70,7 @@ describe 'Student view courses' do
   end
 
   it 'and buy course' do
-    user = User.create!(email: 'peter@capaldi.com', password: '12345678')
+    user = User.create!(email: 'estudante@codeplay.com', password: '12345678')
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')
 
@@ -83,7 +95,7 @@ describe 'Student view courses' do
   end
 
   it 'and cannot buy a course twice' do
-    user = User.create!(email: 'peter@capaldi.com', password: '12345678')
+    user = User.create!(email: 'estudante@codeplay.com', password: '12345678')
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')
 
@@ -101,7 +113,7 @@ describe 'Student view courses' do
   end
 
   it 'and without enrollment cannot view lesson link' do
-    user = User.create!(email: 'peter@capaldi.com', password: '12345678')
+    user = User.create!(email: 'estudante@codeplay.com', password: '12345678')
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')
 

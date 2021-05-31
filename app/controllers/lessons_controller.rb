@@ -10,8 +10,12 @@ class LessonsController < ApplicationController
   end
 
   def create
-    @lesson = @course.lessons.create!(lesson_params)
-    redirect_to @course, notice: 'Aula cadastrada com sucesso'
+    @lesson = @course.lessons.new(lesson_params)
+    if @lesson.save
+      redirect_to @course, notice: 'Aula cadastrada com sucesso'
+    else
+      render :new
+    end
   end
 
   private

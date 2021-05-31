@@ -1,5 +1,8 @@
 ---
 pt-BR:
+  lessons:
+    new:
+      title: Criar aula
   lesson:
     duration:
       zero: Sem duração

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin deletes lesson' do
+describe 'Admin edits enrollment' do
   xit 'successfully' do
   end
 end

@@ -19,7 +19,7 @@
 </dl>
 
 <% if user_signed_in? %>
-  <% unless current_user.courses.include?(@course) %>
+  <% unless current_user.courses.include?(@course) || @course.enrollment_deadline < Date.current %>
     <%= link_to t('.enroll'), enroll_course_path(@course), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% else %> 

@@ -1,3 +1,9 @@
+<% lesson.errors.each do |error| %>
+  <div class="container px-4 mt-3 alert alert-danger">
+    <span><%= error.full_message %></span><br>
+  </div>
+<% end %>
+
 <%= form_with model: [course, lesson] do |form| %>
 
   <div class="mb-3">
@@ -13,6 +19,6 @@
     <%= form.text_area :description, class: 'form-control' %>
   </div>
 
-  <%= form.submit 'Criar Aula', class: 'btn btn-primary' %>
+  <%= form.submit class: 'btn btn-primary' %>
   <%= link_to t('helpers.button.back'), back_path, class: 'btn btn-secondary' %>
 <% end %>

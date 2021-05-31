@@ -27,7 +27,7 @@ describe 'Admin view lessons' do
   end
 
   it 'and view details' do
-    user = User.create!(email: 'peter@capaldi.com', password: '12345678')
+    user = User.create!(email: 'estudante@codeplay.com', password: '12345678')
 
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')

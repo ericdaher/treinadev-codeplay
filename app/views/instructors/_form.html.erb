@@ -1,5 +1,7 @@
 <% instructor.errors.each do |error| %>
-  <span><%= error.full_message %></span><br>
+  <div class="container px-4 mt-3 alert alert-danger">
+    <span><%= error.full_message %></span><br>
+  </div>
 <% end %>
 
 <%= form_with model: instructor do |form| %>

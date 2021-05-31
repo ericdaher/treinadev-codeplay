@@ -25,8 +25,37 @@ describe 'Admin registers lessons' do
     expect(current_path).to eq(course_path(course))
   end
 
-  xit 'and attributes cannot be blank' do
+  it 'and attributes cannot be blank' do
+    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
+                                 bio: 'Twelfth Doctor')
+
+    course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: '22/12/2033')
+
+    visit course_path(course)
+    click_on 'Registrar uma aula'
     
+    click_on 'Criar Aula'
+
+    expect(page).to have_content('não pode ficar em branco', count: 3)
+  end
+
+  it 'and lesson must be greater than 0' do
+    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
+                                 bio: 'Twelfth Doctor')
+
+    course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: '22/12/2033')
+
+    visit course_path(course)
+    click_on 'Registrar uma aula'
+
+    fill_in 'Duração', with: -1
+    click_on 'Criar Aula'
+
+    expect(page).to have_content('deve ser maior ou igual a 0')
   end
 
   it 'cancels and goes back' do

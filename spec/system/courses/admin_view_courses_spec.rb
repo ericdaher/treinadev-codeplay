@@ -72,7 +72,7 @@ describe 'Admin view courses' do
     expect(current_path).to eq root_path
   end
 
-  it 'and return to promotions page' do
+  it 'and return to courses page' do
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')
 
