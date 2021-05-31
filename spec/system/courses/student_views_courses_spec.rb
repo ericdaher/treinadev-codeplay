@@ -111,23 +111,4 @@ describe 'Student view courses' do
 
     expect(page).to_not have_link 'Comprar'
   end
-
-  it 'and without enrollment cannot view lesson link' do
-    user = User.create!(email: 'estudante@codeplay.com', password: '12345678')
-    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
-                                 bio: 'Twelfth Doctor')
-
-    course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10, instructor: capaldi,
-                   enrollment_deadline: 1.month.from_now)
-
-    Lesson.create!(name: 'Classes e Objetos', duration: 20, description: 'Orientação a Objetos em Ruby', course: course)
-
-    login_as user, scope: :user
-    visit root_path
-    click_on 'Ruby'
-
-    expect(page).to have_content 'Classes e Objetos'
-    expect(page).to_not have_link 'Classes e Objetos'
-  end
 end
