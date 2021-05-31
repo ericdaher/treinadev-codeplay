@@ -31,6 +31,7 @@ class CoursesController < ApplicationController
     if @course.update(course_params)
       redirect_to @course, notice: t('.success')
     else
+      @instructors = Instructor.all
       render :edit
     end
   end

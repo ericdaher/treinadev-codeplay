@@ -61,4 +61,20 @@ describe 'Admin edits courses' do
     
     expect(current_path).to eq(course_path(course))
   end
+
+  it 'renders edit form after errors' do
+    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
+                                 bio: 'Twelfth Doctor')
+
+    course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: '22/12/2033')
+
+    visit course_path(course)
+    click_on 'Editar'
+    fill_in 'Preço', with: '0'
+    click_on 'Atualizar Curso'
+
+    expect(current_path).to eq(course_path(course))
+  end
 end 
