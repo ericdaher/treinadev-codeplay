@@ -3,10 +3,17 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :courses do 
-    resources :lessons, only: %i[show new create]
+  namespace :admin do
+    resources :courses do
+      resources :lessons, only: %i[show new create]
+    end
+    resources :instructors
+  end
+
+  resources :courses, only: %i[index show] do 
+    resources :lessons, only: %i[show]
     post 'enroll', on: :member
     get 'mine', on: :collection
   end
-  resources :instructors
+  resources :instructors, only: %i[index show]
 end

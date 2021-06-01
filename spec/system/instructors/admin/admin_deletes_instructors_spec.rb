@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin view instructors' do
+describe 'Admin deletes instructors' do
   it 'successfully' do
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')

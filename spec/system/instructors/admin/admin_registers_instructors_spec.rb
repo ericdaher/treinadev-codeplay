@@ -6,7 +6,7 @@ describe 'Admin registers instructors' do
     click_on 'Professores'
 
     expect(page).to have_link('Registrar um professor',
-                              href: new_instructor_path)
+                              href: new_admin_instructor_path)
   end
 
   it 'successfully' do
@@ -20,7 +20,7 @@ describe 'Admin registers instructors' do
     attach_file 'Foto de Perfil', Rails.root.join('spec/fixtures/capaldi.jpg')
     click_on 'Criar Professor'
 
-    expect(current_path).to eq(instructor_path(Instructor.last))
+    expect(current_path).to eq(admin_instructor_path(Instructor.last))
     expect(page).to have_css("img[src*='capaldi.jpg']")
     expect(page).to have_content('Peter Capaldi')
     expect(page).to have_content('peter@capaldi.com')
@@ -63,6 +63,6 @@ describe 'Admin registers instructors' do
     click_on 'Registrar um professor'
     click_on 'Voltar'
     
-    expect(current_path).to eq(instructors_path)
+    expect(current_path).to eq(admin_instructors_path)
   end
 end

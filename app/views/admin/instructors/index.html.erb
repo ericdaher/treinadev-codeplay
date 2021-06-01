@@ -14,7 +14,7 @@
         <tbody>
           <% @instructors.each do |instructor| %>
             <tr>
-              <td><%= link_to instructor.name, instructor %></td>
+              <td><%= link_to instructor.name, admin_instructor_path(instructor) %></td>
               <td><%= instructor.bio %></td>
             </tr>
           <% end %>
@@ -24,5 +24,5 @@
   </div>
 <% end %>
 
-<%= link_to t('.register'), new_instructor_path, class: 'btn btn-primary' %>
+<%= link_to t('.register'), new_admin_instructor_path, class: 'btn btn-primary' %>
 <%= link_to t('helpers.button.back'), root_path, class: 'btn btn-secondary' %>

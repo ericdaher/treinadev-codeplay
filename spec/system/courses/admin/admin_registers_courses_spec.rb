@@ -6,7 +6,7 @@ describe 'Admin registers courses' do
     click_on 'Cursos'
 
     expect(page).to have_link('Registrar um curso',
-                              href: new_course_path)
+                              href: new_admin_course_path)
   end
 
   it 'successfully' do
@@ -26,7 +26,7 @@ describe 'Admin registers courses' do
     attach_file 'Banner', Rails.root.join('spec/fixtures/ruby_on_rails.png')
     click_on 'Criar Curso'
 
-    expect(current_path).to eq(course_path(Course.last))
+    expect(current_path).to eq(admin_course_path(Course.last))
     expect(page).to have_content('Ruby on Rails')
     expect(page).to have_content('Um curso de Ruby on Rails')
     expect(page).to have_content('RUBYONRAILS')
@@ -74,6 +74,6 @@ describe 'Admin registers courses' do
     click_on 'Registrar um curso'
     click_on 'Voltar'
     
-    expect(current_path).to eq(courses_path)
+    expect(current_path).to eq(admin_courses_path)
   end
 end

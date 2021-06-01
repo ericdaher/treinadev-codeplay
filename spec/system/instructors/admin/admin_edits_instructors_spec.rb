@@ -19,7 +19,7 @@ describe 'Admin edits instructors' do
     attach_file 'Foto de Perfil', Rails.root.join('spec/fixtures/clara.jpg')
     click_on 'Atualizar Professor'
 
-    expect(current_path).to eq(instructor_path(Instructor.last))
+    expect(current_path).to eq(admin_instructor_path(Instructor.last))
     expect(page).to have_css("img[src*='clara.jpg']")
     expect(page).to have_content('Clara Oswald')
     expect(page).to have_content('clara@oswald.com')
@@ -82,6 +82,6 @@ describe 'Admin edits instructors' do
     click_on 'Editar'
     click_on 'Voltar'
     
-    expect(current_path).to eq(instructor_path(capaldi))
+    expect(current_path).to eq(admin_instructor_path(capaldi))
   end
 end

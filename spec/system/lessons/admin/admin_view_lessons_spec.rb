@@ -17,7 +17,7 @@ describe 'Admin view lessons' do
     Lesson.create!(name: 'Monkey Patch', duration: 10, description: 'Uma aula sobre Monkey Patch', course: course)
     Lesson.create!(name: 'Aula que não será mostrada', duration: 40, description: 'Descrição que não aparece', course: other_course)
 
-    visit course_path(course)
+    visit admin_course_path(course)
     expect(page).to have_text('Classes e Objetos')
     expect(page).to have_text('Orientação a Objetos em Ruby')
     expect(page).to have_text('Monkey Patch')
@@ -43,7 +43,7 @@ describe 'Admin view lessons' do
     Lesson.create!(name: 'Classes e Objetos III', duration: 20, description: 'Orientação a Objetos em Ruby - Parte III', course: course)
 
     login_as user, scope: :user
-    visit course_path(course)
+    visit admin_course_path(course)
     click_on 'Classes e Objetos I'  
 
     expect(page).to have_content('Classes e Objetos I')
@@ -73,7 +73,7 @@ describe 'Admin view lessons' do
                             code: 'RUBYBASIC', price: 10, instructor: capaldi,
                             enrollment_deadline: '22/12/2033')
 
-    visit course_path(course)
+    visit admin_course_path(course)
 
     expect(page).to have_content('Nenhuma aula disponível')
   end

@@ -9,10 +9,10 @@ describe 'Admin deletes courses' do
                             code: 'RUBYBASIC', price: 10, instructor: capaldi,
                             enrollment_deadline: '22/12/2033')
 
-    visit course_path(course)
+    visit admin_course_path(course)
     expect { click_on 'Excluir' }.to change { Course.count }.by(-1)
 
     expect(page).to have_text('Curso excluído com sucesso')
-    expect(current_path).to eq(courses_path)
+    expect(current_path).to eq(admin_courses_path)
   end
 end 

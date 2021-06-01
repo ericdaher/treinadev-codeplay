@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Admin edits courses' do
+describe 'Admin registers lessons' do
   it 'successfully' do
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')
@@ -9,43 +9,23 @@ describe 'Admin edits courses' do
                             code: 'RUBYBASIC', price: 10, instructor: capaldi,
                             enrollment_deadline: '22/12/2033')
 
-    visit course_path(course)
-    click_on 'Editar'
-    fill_in 'Nome', with: 'Ruby on Rails'
-    fill_in 'Descrição', with: 'Um curso de RoR'
-    fill_in 'Código', with: 'RUBYONRAILS'
-    fill_in 'Preço', with: '30'
-    fill_in 'Data limite de matrícula', with: Date.current.strftime('%d/%m/%Y')
-    click_on 'Atualizar Curso'
+    visit admin_course_path(course)
+    expect(page).to have_text('Nenhuma aula disponível')
+    click_on 'Registrar uma aula'
 
-    expect(page).to have_text('Ruby on Rails')
-    expect(page).to have_text('Um curso de RoR')
-    expect(page).to have_text('RUBYONRAILS')
-    expect(page).to have_text('R$ 30,00')
-    expect(page).to have_text(Date.current.strftime('%d/%m/%Y'))
-    expect(page).to have_text('Curso atualizado com sucesso')
+    fill_in 'Nome', with: 'Duck Typing'
+    fill_in 'Duração', with: 10
+    fill_in 'Descrição', with: 'Uma aula sobre duck typing'
+    click_on 'Criar Aula'
+
+    expect(page).to_not have_text('Nenhuma aula disponível')
+    expect(page).to have_text('Aula cadastrada com sucesso')
+    expect(page).to have_content('Duck Typing')
+    expect(page).to have_text('Uma aula sobre duck typing')
+    expect(current_path).to eq(admin_course_path(course))
   end
 
-  it 'and changes instructor' do
-    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
-                                 bio: 'Twelfth Doctor')
-
-    clara = Instructor.create!(name: 'Clara Oswald', email: 'clara@oswald.com',
-                               bio: 'Impossible Girl')
-
-    course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
-                            enrollment_deadline: '22/12/2033')
-
-    visit course_path(course)
-    click_on 'Editar'
-    select 'Clara Oswald (clara@oswald.com)', from: 'Professor'
-    click_on 'Atualizar Curso'
-
-    expect(page).to have_text('Clara Oswald')
-  end
-
-  it 'cancels and go back' do
+  it 'and attributes cannot be blank' do
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')
 
@@ -53,16 +33,15 @@ describe 'Admin edits courses' do
                             code: 'RUBYBASIC', price: 10, instructor: capaldi,
                             enrollment_deadline: '22/12/2033')
 
-    visit root_path
-    click_on 'Cursos'
-    click_on 'Ruby'
-    click_on 'Editar'
-    click_on 'Voltar'
+    visit admin_course_path(course)
+    click_on 'Registrar uma aula'
     
-    expect(current_path).to eq(course_path(course))
+    click_on 'Criar Aula'
+
+    expect(page).to have_content('não pode ficar em branco', count: 3)
   end
 
-  it 'renders edit form after errors' do
+  it 'and lesson must be greater than 0' do
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')
 
@@ -70,11 +49,27 @@ describe 'Admin edits courses' do
                             code: 'RUBYBASIC', price: 10, instructor: capaldi,
                             enrollment_deadline: '22/12/2033')
 
-    visit course_path(course)
-    click_on 'Editar'
-    fill_in 'Preço', with: '0'
-    click_on 'Atualizar Curso'
+    visit admin_course_path(course)
+    click_on 'Registrar uma aula'
 
-    expect(current_path).to eq(course_path(course))
+    fill_in 'Duração', with: -1
+    click_on 'Criar Aula'
+
+    expect(page).to have_content('deve ser maior ou igual a 0')
   end
-end 
+
+  it 'cancels and goes back' do
+    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
+                                 bio: 'Twelfth Doctor')
+
+    course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: '22/12/2033')
+
+    visit admin_course_path(course)
+    click_on 'Registrar uma aula'
+    click_on 'Voltar'
+
+    expect(current_path).to eq(admin_course_path(course))
+  end
+end

@@ -1,4 +1,4 @@
-class InstructorsController < ApplicationController
+class Admin::InstructorsController < ApplicationController
   before_action :set_instructor, only: %i[show edit update destroy]
 
   def index
@@ -15,7 +15,7 @@ class InstructorsController < ApplicationController
   def create
     @instructor = Instructor.new(instructor_params)
     if @instructor.save
-      redirect_to @instructor
+      redirect_to admin_instructor_path(@instructor)
     else
       render :new
     end
@@ -26,7 +26,7 @@ class InstructorsController < ApplicationController
 
   def update
     if @instructor.update(instructor_params)
-      redirect_to @instructor, notice: t('.success')
+      redirect_to admin_instructor_path(@instructor), notice: t('.success')
     else
       render :new
     end
@@ -34,7 +34,7 @@ class InstructorsController < ApplicationController
 
   def destroy
     @instructor.destroy
-    redirect_to instructors_path, notice: t('.success')
+    redirect_to admin_instructors_path, notice: t('.success')
   end
 
   private
