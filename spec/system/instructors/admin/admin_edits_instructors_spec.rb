@@ -8,7 +8,7 @@ describe 'Admin edits instructors' do
     capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
                                    filename: 'capaldi.jpg' )
 
-    visit root_path
+    visit admin_root_path
     click_on 'Professor'
     click_on 'Peter Capaldi'
     click_on 'Editar'
@@ -35,7 +35,7 @@ describe 'Admin edits instructors' do
     capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
                                    filename: 'capaldi.jpg' )
 
-    visit root_path
+    visit admin_root_path
     click_on 'Professores'
     click_on 'Peter Capaldi'
     click_on 'Editar'
@@ -61,7 +61,7 @@ describe 'Admin edits instructors' do
     clara.profile_picture.attach(io: File.open('spec/fixtures/clara.jpg'),
                                  filename: 'clara.jpg')
     
-    visit root_path
+    visit admin_root_path
     click_on 'Professores'
     click_on 'Peter Capaldi'
     click_on 'Editar'
@@ -76,7 +76,7 @@ describe 'Admin edits instructors' do
     capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
                                  bio: 'Twelfth Doctor')
 
-    visit root_path
+    visit admin_root_path
     click_on 'Professores'
     click_on 'Peter Capaldi'
     click_on 'Editar'

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
+    root 'home#index'
     resources :courses do
       resources :lessons, only: %i[show new create]
     end

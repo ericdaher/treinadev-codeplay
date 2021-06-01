@@ -12,6 +12,6 @@
   <dd><%= @instructor.bio %></dd>
 </dl>
 
-<%= link_to t('helpers.button.back'), instructors_path, class: 'btn btn-secondary' %>
+<%= link_to t('helpers.button.back'), admin_instructors_path, class: 'btn btn-secondary' %>
 <%= link_to t('.edit'), edit_admin_instructor_path(@instructor), class: 'btn btn-primary' %>
 <%= link_to t('.destroy'), admin_instructor_path(@instructor), method: :delete, class: 'btn btn-danger' %>

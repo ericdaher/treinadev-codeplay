@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
+<nav class="navbar navbar-expand-sm <%= title.include?('Admin') ? "navbar-dark bg-dark" : "navbar-light bg-light"%>">
   <div class="container-xxl flex-wrap flex-md-nowrap">
-    <%= link_to 'Codeplay', root_path, class: "navbar-brand" %>
+    <%= link_to title, root_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,10 +8,10 @@
       <div class="navbar-nav">
         <%= link_to 'Home', root_path, class: class_names('nav-link', { active: current_page?(root_path) }), 
             aria: current_page?(root_path) ? { current: "page" } : {} %>
-        <%= link_to Course.model_name.human(count: 2), admin_courses_path, class: class_names('nav-link', { active: current_page?(admin_courses_path) }),
-            aria: current_page?(admin_courses_path) ? { current: "page" } : {} %>
-        <%= link_to Instructor.model_name.human(count: 2), admin_instructors_path, class: class_names('nav-link', { active: current_page?(admin_instructors_path) }),
-            aria: current_page?(admin_instructors_path) ? { current: "page" } : {} %>
+        <%= link_to Course.model_name.human(count: 2), courses_path, class: class_names('nav-link', { active: current_page?(courses_path) }),
+            aria: current_page?(courses_path) ? { current: "page" } : {} %>
+        <%= link_to Instructor.model_name.human(count: 2), instructors_path, class: class_names('nav-link', { active: current_page?(instructors_path) }),
+            aria: current_page?(instructors_path) ? { current: "page" } : {} %>
       </div>
       <div class="navbar-nav nav-item dropdown ms-auto">
         <%= link_to t('navbar.access'), '#', class: 'nav-link dropdown-toggle', id: 'navbarDropdownMenuLink', role: 'button', 'data-bs-toggle': 'dropdown', aria: { expanded: 'false' } %>

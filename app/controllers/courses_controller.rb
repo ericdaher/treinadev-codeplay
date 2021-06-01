@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: %i[show edit update destroy enroll]
+  before_action :set_course, only: %i[show enroll]
 
   def index
     @courses = Course.available

@@ -14,7 +14,7 @@ describe 'Admin view instructors' do
     clara.profile_picture.attach(io: File.open('spec/fixtures/clara.jpg'),
                                  filename: 'clara.jpg')
 
-    visit root_path
+    visit admin_root_path
     click_on 'Professores'
 
     expect(page).to have_content('Peter Capaldi')
@@ -30,7 +30,7 @@ describe 'Admin view instructors' do
     capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
                                    filename: 'capaldi.jpg' )
   
-    visit root_path
+    visit admin_root_path
     click_on 'Professores'
     click_on 'Peter Capaldi'
 
@@ -41,7 +41,7 @@ describe 'Admin view instructors' do
   end
   
   it 'and no course is available' do
-    visit root_path
+    visit admin_root_path
     click_on 'Professores'
 
     expect(page).to have_content('Nenhum professor cadastrado')
@@ -54,10 +54,10 @@ describe 'Admin view instructors' do
     capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
                                    filename: 'capaldi.jpg' )
 
-    visit root_path
+    visit admin_root_path
     click_on 'Cursos'
     click_on 'Voltar'
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq admin_root_path
   end
 end

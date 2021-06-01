@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title><%= content_for?(:title) ? yield(:title) : "Codeplay" %></title>
+    <title><%= "Codeplay | Admin" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Codeplay" %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,8 +13,8 @@
 
   <body>
     <header>
-      <%= render partial: 'layouts/navigation', locals: { root_path: root_path, courses_path: courses_path, 
-                                                          instructors_path: instructors_path, title: 'Codeplay' } %>
+      <%= render partial: 'layouts/navigation', locals: { root_path: admin_root_path, courses_path: admin_courses_path, 
+                                                          instructors_path: admin_instructors_path, title: 'Codeplay | Admin' } %>
     </header>
     <% if notice %>
       <div class="container px-4 mt-3 alert alert-warning">

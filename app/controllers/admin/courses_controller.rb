@@ -1,4 +1,4 @@
-class Admin::CoursesController < ApplicationController
+class Admin::CoursesController < AdminController
   before_action :set_course, only: %i[show edit update destroy enroll]
 
   def index

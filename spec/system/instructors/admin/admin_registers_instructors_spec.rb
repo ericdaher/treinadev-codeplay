@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Admin registers instructors' do
   it 'from index page' do
-    visit root_path
+    visit admin_root_path
     click_on 'Professores'
 
     expect(page).to have_link('Registrar um professor',
@@ -10,7 +10,7 @@ describe 'Admin registers instructors' do
   end
 
   it 'successfully' do
-    visit root_path
+    visit admin_root_path
     click_on 'Professor'
     click_on 'Registrar um professor'
 
@@ -29,7 +29,7 @@ describe 'Admin registers instructors' do
   end
 
   it 'and attributes cannot be blank' do
-    visit root_path
+    visit admin_root_path
     click_on 'Professores'
     click_on 'Registrar um professor'
     
@@ -48,7 +48,7 @@ describe 'Admin registers instructors' do
     capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
                                    filename: 'capaldi.jpg' )
 
-    visit root_path
+    visit admin_root_path
     click_on 'Professores'
     click_on 'Registrar um professor'
     fill_in 'Email', with: 'peter@capaldi.com'
@@ -58,7 +58,7 @@ describe 'Admin registers instructors' do
   end
 
   it 'cancels and go back' do
-    visit root_path
+    visit admin_root_path
     click_on 'Professores'
     click_on 'Registrar um professor'
     click_on 'Voltar'

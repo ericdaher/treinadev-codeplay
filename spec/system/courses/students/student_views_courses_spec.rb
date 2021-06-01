@@ -111,4 +111,22 @@ describe 'Student view courses' do
 
     expect(page).to_not have_link 'Comprar'
   end
+
+  it 'go to mine courses page when enrollments exists' do
+    user = User.create!(email: 'estudante@codeplay.com', password: '12345678')
+    capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
+                                 bio: 'Twelfth Doctor')
+
+    course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
+                   code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                   enrollment_deadline: 1.month.from_now)
+
+    Enrollment.create!(user: user, course: course, price: course.price)
+
+    login_as user, scope: :user
+    visit root_path
+
+    expect(page).to have_content('Meus cursos')
+    expect(page).to have_content('Ruby')
+  end
 end

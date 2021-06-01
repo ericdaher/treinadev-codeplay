@@ -14,7 +14,7 @@ describe 'Admin deletes instructors' do
     clara.profile_picture.attach(io: File.open('spec/fixtures/clara.jpg'),
                                  filename: 'clara.jpg')
 
-    visit root_path
+    visit admin_root_path
     click_on 'Professores'
 
     expect(page).to have_content('Peter Capaldi')

@@ -1,4 +1,4 @@
-class Admin::LessonsController < ApplicationController
+class Admin::LessonsController < AdminController
   before_action :set_course, only: %i[show new create]
 
   def show
