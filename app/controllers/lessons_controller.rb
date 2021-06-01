@@ -7,19 +7,6 @@ class LessonsController < ApplicationController
     @lesson = @course.lessons.find(params[:id])
   end
 
-  def new
-    @lesson = Lesson.new
-  end
-
-  def create
-    @lesson = @course.lessons.new(lesson_params)
-    if @lesson.save
-      redirect_to @course, notice: 'Aula cadastrada com sucesso'
-    else
-      render :new
-    end
-  end
-
   private
 
   def set_course
@@ -28,9 +15,5 @@ class LessonsController < ApplicationController
 
   def user_has_enrollment 
     redirect_to @course unless current_user.courses.include?(@course)
-  end
-
-  def lesson_params
-    params.require(:lesson).permit(:name, :duration, :description)
   end
 end

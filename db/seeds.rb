@@ -28,5 +28,5 @@ puts 'Aulas criadas'
 u = User.create!(email: 'estudante@codeplay.com', password: '12345678')
 puts 'Usuário criado'
 
-Enrollment.create!(user: u, course: c, price: c.price)
+Enrollment.create!(user: u, course: Course.find(1), price: Course.find(1).price)
 puts 'Matrícula criada'

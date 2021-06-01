@@ -1,5 +1,27 @@
 ---
 pt-BR:
+  admin:
+    courses:
+      index:
+        empty: Nenhum curso disponível
+        register: Registrar um curso
+      show:
+        edit: Editar
+        destroy: Excluir
+        register_class: Registrar uma aula
+        enroll: Comprar
+        login_message_html: "Faça %{login_path} para comprar este curso"
+        lessons:
+          empty: Nenhuma aula disponível
+          title: Aulas
+      new:
+        title: Registrar um curso
+      edit:
+        title: Editar
+      update:
+        success: Curso atualizado com sucesso
+      destroy:
+        success: Curso excluído com sucesso
   courses:
     index:
       empty: Nenhum curso disponível
@@ -13,14 +35,6 @@ pt-BR:
       lessons:
         empty: Nenhuma aula disponível
         title: Aulas
-    new:
-      title: Registrar um curso
-    edit:
-      title: Editar
-    update:
-      success: Curso atualizado com sucesso
-    destroy:
-      success: Curso excluído com sucesso
     mine:
       empty: Nenhum curso disponível
       title: Meus cursos

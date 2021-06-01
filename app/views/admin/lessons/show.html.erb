@@ -1,0 +1,9 @@
+<h3><%= @lesson.name %></h3>
+<dl>
+  <dt><%= Lesson.human_attribute_name('description') %></dt>
+  <dd><%= @lesson.description %></dd>
+  <dt><%= Lesson.human_attribute_name('duration') %></dt>
+  <dd><%= t('lesson.duration', count: @lesson.duration) %></dd>
+</dl>
+
+<%= link_to t('helpers.button.back'), admin_course_path(@course) %>

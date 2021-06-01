@@ -1,20 +1,21 @@
 ---
 pt-BR:
-  instructors:
-    index:
-      empty: Nenhum professor cadastrado
-      register: Registrar um professor
-    show:
-      edit: Editar
-      destroy: Excluir
-    new:
-      title: Criar professor
-    edit:
-      title: Editar
-    update:
-      success: Professor atualizado com sucesso
-    destroy:
-      success: Professor excluído com sucesso
+  admin:
+    instructors:
+      index:
+        empty: Nenhum professor cadastrado
+        register: Registrar um professor
+      show:
+        edit: Editar
+        destroy: Excluir
+      new:
+        title: Criar professor
+      edit:
+        title: Editar
+      update:
+        success: Professor atualizado com sucesso
+      destroy:
+        success: Professor excluído com sucesso
   activerecord:
     models:
       instructor:
