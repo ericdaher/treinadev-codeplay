@@ -1,4 +1,4 @@
-class Admin::HomeController < AdminController
+class Admin::HomeController < Admin::AdminController
   def index
     @courses = Course.all
   end
