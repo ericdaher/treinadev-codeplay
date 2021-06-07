@@ -17,4 +17,10 @@ Rails.application.routes.draw do
     get 'mine', on: :collection
   end
   resources :instructors, only: %i[index show]
+
+  namespace :api do
+    namespace :v1 do
+      resources :courses, only: %i[index show create], param: :code
+    end
+  end
 end

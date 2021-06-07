@@ -1,4 +1,4 @@
-class Admin::InstructorsController < AdminController
+class Admin::InstructorsController < Admin::AdminController
   before_action :set_instructor, only: %i[show edit update destroy]
 
   def index
