@@ -1,3 +1,5 @@
-class Admin::AdminController < ApplicationController
-  layout 'admin'
+module Admin
+  class AdminController < ApplicationController
+    layout 'admin'
+  end
 end

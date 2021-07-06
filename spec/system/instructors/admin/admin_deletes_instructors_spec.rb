@@ -9,7 +9,7 @@ describe 'Admin deletes instructors' do
                                bio: 'Impossible Girl')
 
     capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
-                                   filename: 'capaldi.jpg' )
+                                   filename: 'capaldi.jpg')
 
     clara.profile_picture.attach(io: File.open('spec/fixtures/clara.jpg'),
                                  filename: 'clara.jpg')
@@ -24,7 +24,7 @@ describe 'Admin deletes instructors' do
 
     click_on 'Peter Capaldi'
     click_on 'Excluir'
-    
+
     expect(page).to_not have_content('Peter Capaldi')
     expect(page).to_not have_content('Twelfth Doctor')
     expect(page).to have_content('Clara Oswald')

@@ -1,4 +1,4 @@
-require 'rails_helper' 
+require 'rails_helper'
 
 describe 'Student view lessons' do
   it 'successfully' do
@@ -7,8 +7,8 @@ describe 'Student view lessons' do
                                  bio: 'Twelfth Doctor')
 
     course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10, instructor: capaldi,
-                   enrollment_deadline: 1.month.from_now)
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: 1.month.from_now)
 
     Lesson.create!(name: 'Classes e Objetos', duration: 20, description: 'Orientação a Objetos em Ruby', course: course)
     Enrollment.create!(user: user, course: course, price: course.price)
@@ -29,8 +29,8 @@ describe 'Student view lessons' do
                                  bio: 'Twelfth Doctor')
 
     course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10, instructor: capaldi,
-                   enrollment_deadline: 1.month.from_now)
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: 1.month.from_now)
 
     Lesson.create!(name: 'Classes e Objetos', duration: 20, description: 'Orientação a Objetos em Ruby', course: course)
 
@@ -47,10 +47,11 @@ describe 'Student view lessons' do
                                  bio: 'Twelfth Doctor')
 
     course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10, instructor: capaldi,
-                   enrollment_deadline: 1.month.from_now)
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: 1.month.from_now)
 
-    lesson = Lesson.create!(name: 'Classes e Objetos', duration: 20, description: 'Orientação a Objetos em Ruby', course: course)
+    lesson = Lesson.create!(name: 'Classes e Objetos', duration: 20, description: 'Orientação a Objetos em Ruby',
+                            course: course)
 
     visit course_lesson_path(course, lesson)
 
@@ -63,10 +64,11 @@ describe 'Student view lessons' do
                                  bio: 'Twelfth Doctor')
 
     course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10, instructor: capaldi,
-                   enrollment_deadline: 1.month.from_now)
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: 1.month.from_now)
 
-    lesson = Lesson.create!(name: 'Classes e Objetos', duration: 20, description: 'Orientação a Objetos em Ruby', course: course)
+    lesson = Lesson.create!(name: 'Classes e Objetos', duration: 20, description: 'Orientação a Objetos em Ruby',
+                            course: course)
 
     login_as user, scope: :user
     visit course_lesson_path(course, lesson)
@@ -81,10 +83,11 @@ describe 'Student view lessons' do
                                  bio: 'Twelfth Doctor')
 
     course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10, instructor: capaldi,
-                   enrollment_deadline: 1.month.from_now)
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: 1.month.from_now)
 
-    lesson = Lesson.create!(name: 'Classes e Objetos', duration: 20, description: 'Orientação a Objetos em Ruby', course: course)
+    lesson = Lesson.create!(name: 'Classes e Objetos', duration: 20, description: 'Orientação a Objetos em Ruby',
+                            course: course)
     Enrollment.create!(user: user, course: course, price: course.price)
 
     login_as user, scope: :user

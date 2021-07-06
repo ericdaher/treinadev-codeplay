@@ -35,7 +35,7 @@ describe 'Admin registers lessons' do
 
     visit admin_course_path(course)
     click_on 'Registrar uma aula'
-    
+
     click_on 'Criar Aula'
 
     expect(page).to have_content('não pode ficar em branco', count: 3)

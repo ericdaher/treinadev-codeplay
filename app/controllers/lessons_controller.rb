@@ -13,7 +13,7 @@ class LessonsController < ApplicationController
     @course = Course.find(params[:course_id])
   end
 
-  def user_has_enrollment 
+  def user_has_enrollment
     redirect_to @course unless current_user.courses.include?(@course)
   end
 end

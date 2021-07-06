@@ -15,7 +15,7 @@ describe Lesson do
 
     it 'duration must be positive' do
       lesson = Lesson.new(duration: -1)
-      
+
       lesson.valid?
 
       expect(lesson.errors[:duration]).to include('deve ser maior ou igual a 0')

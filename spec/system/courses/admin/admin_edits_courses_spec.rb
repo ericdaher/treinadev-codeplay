@@ -58,7 +58,7 @@ describe 'Admin edits courses' do
     click_on 'Ruby'
     click_on 'Editar'
     click_on 'Voltar'
-    
+
     expect(current_path).to eq(admin_course_path(course))
   end
 
@@ -77,4 +77,4 @@ describe 'Admin edits courses' do
 
     expect(current_path).to eq(admin_course_path(course))
   end
-end 
+end

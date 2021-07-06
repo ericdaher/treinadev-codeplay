@@ -15,4 +15,4 @@ describe 'Admin deletes courses' do
     expect(page).to have_text('Curso excluído com sucesso')
     expect(current_path).to eq(admin_courses_path)
   end
-end 
+end

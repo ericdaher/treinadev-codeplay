@@ -5,8 +5,7 @@ class CoursesController < ApplicationController
     @courses = Course.available
   end
 
-  def show
-  end
+  def show; end
 
   def enroll
     Enrollment.create(user: current_user, course: @course, price: @course.price)

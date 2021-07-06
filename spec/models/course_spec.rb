@@ -2,15 +2,9 @@ require 'rails_helper'
 
 describe Course do
   context 'validation' do
-    it 'attributes cannot be blank' do
-      course = Course.new
-
-      course.valid?
-
-      expect(course.errors[:name]).to include('não pode ficar em branco')
-      expect(course.errors[:code]).to include('não pode ficar em branco')
-      expect(course.errors[:price]).to include('não pode ficar em branco')
-    end
+    it { should validate_presence_of(:name).with_message('não pode ficar em branco') }
+    it { should validate_presence_of(:code).with_message('não pode ficar em branco') }
+    it { should validate_presence_of(:price).with_message('não pode ficar em branco') }
 
     it 'code must be uniq' do
       capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
@@ -29,7 +23,7 @@ describe Course do
     it 'price must be positive' do
       course = Course.new(price: 0)
 
-      course.valid? 
+      course.valid?
 
       expect(course.errors[:price]).to include('deve ser maior que 0')
     end

@@ -54,7 +54,7 @@ describe 'Account management' do
       expect(current_path).to eq(user_registration_path)
     end
   end
-  
+
   context 'sign in' do
     it 'with email and password' do
       User.create!(email: 'estudante@codeplay.com', password: '12345678')

@@ -9,7 +9,7 @@ describe 'Admin view instructors' do
                                bio: 'Impossible Girl')
 
     capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
-                                   filename: 'capaldi.jpg' )
+                                   filename: 'capaldi.jpg')
 
     clara.profile_picture.attach(io: File.open('spec/fixtures/clara.jpg'),
                                  filename: 'clara.jpg')
@@ -28,8 +28,8 @@ describe 'Admin view instructors' do
                                  bio: 'Twelfth Doctor')
 
     capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
-                                   filename: 'capaldi.jpg' )
-  
+                                   filename: 'capaldi.jpg')
+
     visit admin_root_path
     click_on 'Professores'
     click_on 'Peter Capaldi'
@@ -39,7 +39,7 @@ describe 'Admin view instructors' do
     expect(page).to have_content('peter@capaldi.com')
     expect(page).to have_content('Twelfth Doctor')
   end
-  
+
   it 'and no course is available' do
     visit admin_root_path
     click_on 'Professores'
@@ -52,7 +52,7 @@ describe 'Admin view instructors' do
                                  bio: 'Twelfth Doctor')
 
     capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
-                                   filename: 'capaldi.jpg' )
+                                   filename: 'capaldi.jpg')
 
     visit admin_root_path
     click_on 'Cursos'

@@ -4,15 +4,15 @@ describe 'Courses API' do
   context 'GET /api/v1/courses' do
     it 'should get courses' do
       capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
-                                 bio: 'Twelfth Doctor')
+                                   bio: 'Twelfth Doctor')
 
       Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                    code: 'RUBYBASIC', price: 10, instructor: capaldi,
-                    enrollment_deadline: '22/12/2033')
+                     code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                     enrollment_deadline: '22/12/2033')
       Course.create!(name: 'Ruby on Rails',
-                    description: 'Um curso de Ruby on Rails',
-                    code: 'RUBYONRAILS', price: 20, instructor: capaldi,
-                    enrollment_deadline: '20/12/2033')
+                     description: 'Um curso de Ruby on Rails',
+                     code: 'RUBYONRAILS', price: 20, instructor: capaldi,
+                     enrollment_deadline: '20/12/2033')
 
       get '/api/v1/courses'
 
@@ -37,15 +37,15 @@ describe 'Courses API' do
   context 'GET /api/v1/courses/:code' do
     it 'should return a course' do
       capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
-                                 bio: 'Twelfth Doctor')
+                                   bio: 'Twelfth Doctor')
 
       Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                    code: 'RUBYBASIC', price: 10, instructor: capaldi,
-                    enrollment_deadline: '22/12/2033')
+                     code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                     enrollment_deadline: '22/12/2033')
       Course.create!(name: 'Ruby on Rails',
-                    description: 'Um curso de Ruby on Rails',
-                    code: 'RUBYONRAILS', price: 20, instructor: capaldi,
-                    enrollment_deadline: '20/12/2033')
+                     description: 'Um curso de Ruby on Rails',
+                     code: 'RUBYONRAILS', price: 20, instructor: capaldi,
+                     enrollment_deadline: '20/12/2033')
 
       get '/api/v1/courses/RUBYBASIC'
 
@@ -65,9 +65,9 @@ describe 'Courses API' do
   context 'POST /api/v1/courses' do
     it 'should create a course' do
       capaldi = Instructor.create!(name: 'Peter Capaldi', email: 'peter@capaldi.com',
-                                 bio: 'Twelfth Doctor')
+                                   bio: 'Twelfth Doctor')
 
-      post '/api/v1/courses', params: { 
+      post '/api/v1/courses', params: {
         course: { name: 'Ruby', code: 'RUBYBASIC', price: 10, instructor_id: capaldi.id }
       }
 
@@ -78,7 +78,7 @@ describe 'Courses API' do
     end
 
     it 'should not create a course with invalid params' do
-      post '/api/v1/courses', params: { 
+      post '/api/v1/courses', params: {
         course: { name: 'Ruby' }
       }
 

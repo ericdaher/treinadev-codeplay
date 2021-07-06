@@ -44,9 +44,9 @@ describe 'Student view courses' do
                                  bio: 'Twelfth Doctor')
 
     course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10, instructor: capaldi,
-                   enrollment_deadline: 1.day.ago)
-    
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: 1.day.ago)
+
     login_as user, scope: :user
     visit course_path(course)
 
@@ -78,8 +78,8 @@ describe 'Student view courses' do
                    code: 'RUBYBASIC', price: 10, instructor: capaldi,
                    enrollment_deadline: 1.month.from_now)
     Course.create!(name: 'Ruby on Rails', description: 'Um curso de Ruby on Rails',
-                    code: 'RUBYONRAILS', price: 20, instructor: capaldi,
-                    enrollment_deadline: 1.month.from_now)
+                   code: 'RUBYONRAILS', price: 20, instructor: capaldi,
+                   enrollment_deadline: 1.month.from_now)
 
     login_as user, scope: :user
     visit root_path
@@ -100,8 +100,8 @@ describe 'Student view courses' do
                                  bio: 'Twelfth Doctor')
 
     course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10, instructor: capaldi,
-                   enrollment_deadline: 1.month.from_now)
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: 1.month.from_now)
 
     Enrollment.create!(user: user, course: course, price: course.price)
 
@@ -118,8 +118,8 @@ describe 'Student view courses' do
                                  bio: 'Twelfth Doctor')
 
     course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10, instructor: capaldi,
-                   enrollment_deadline: 1.month.from_now)
+                            code: 'RUBYBASIC', price: 10, instructor: capaldi,
+                            enrollment_deadline: 1.month.from_now)
 
     Enrollment.create!(user: user, course: course, price: course.price)
 

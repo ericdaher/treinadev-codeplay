@@ -6,7 +6,7 @@ describe 'Admin edits instructors' do
                                  bio: 'Twelfth Doctor')
 
     capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
-                                   filename: 'capaldi.jpg' )
+                                   filename: 'capaldi.jpg')
 
     visit admin_root_path
     click_on 'Professor'
@@ -33,13 +33,13 @@ describe 'Admin edits instructors' do
                                  bio: 'Twelfth Doctor')
 
     capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
-                                   filename: 'capaldi.jpg' )
+                                   filename: 'capaldi.jpg')
 
     visit admin_root_path
     click_on 'Professores'
     click_on 'Peter Capaldi'
     click_on 'Editar'
-    
+
     fill_in 'Nome', with: ''
     fill_in 'Email', with: ''
     fill_in 'Descrição', with: ''
@@ -53,14 +53,14 @@ describe 'Admin edits instructors' do
                                  bio: 'Twelfth Doctor')
 
     clara = Instructor.create!(name: 'Clara Oswald', email: 'clara@oswald.com',
-                                 bio: 'Impossible Girl')
+                               bio: 'Impossible Girl')
 
     capaldi.profile_picture.attach(io: File.open('spec/fixtures/capaldi.jpg'),
-                                   filename: 'capaldi.jpg' )
+                                   filename: 'capaldi.jpg')
 
     clara.profile_picture.attach(io: File.open('spec/fixtures/clara.jpg'),
                                  filename: 'clara.jpg')
-    
+
     visit admin_root_path
     click_on 'Professores'
     click_on 'Peter Capaldi'
@@ -81,7 +81,7 @@ describe 'Admin edits instructors' do
     click_on 'Peter Capaldi'
     click_on 'Editar'
     click_on 'Voltar'
-    
+
     expect(current_path).to eq(admin_instructor_path(capaldi))
   end
 end

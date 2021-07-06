@@ -73,7 +73,7 @@ describe 'Admin registers courses' do
     click_on 'Cursos'
     click_on 'Registrar um curso'
     click_on 'Voltar'
-    
+
     expect(current_path).to eq(admin_courses_path)
   end
 end

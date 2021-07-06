@@ -20,7 +20,7 @@ describe Enrollment do
       course = Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
                               code: 'RUBYBASIC', price: 10, instructor: capaldi,
                               enrollment_deadline: 1.month.from_now)
-      
+
       Enrollment.create!(user: user, course: course, price: course.price)
       enrollment = Enrollment.new(user: user, course: course, price: course.price)
 
