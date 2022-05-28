@@ -1,0 +1,36 @@
+- course.errors.each do |error|
+  .container.px-4.mt-3.alert.alert-danger
+    %span= error.full_message
+    %br
+
+= form_with model: [:admin, course] do |form|
+  .mb-3
+    = form.label :name, class: 'form-label'
+    = form.text_field :name, class: 'form-control'
+
+  .mb-3
+    = form.label :description, class: 'form-label'
+    = form.text_field :description, class: 'form-control'
+
+  .mb-3 
+    = form.label :instructor_id, Instructor.model_name.human, class: 'form-label'
+    = form.collection_select :instructor_id, instructors, :id, :display_name, {}, { class: 'form-select' }
+
+  .mb-3 
+    = form.label :code, class: 'form-label'
+    = form.text_field :code, class: 'form-control'
+  
+  .mb-3 
+    = form.label :price, class: 'form-label'
+    = form.number_field :price, class: 'form-control'
+  
+  .mb-3 
+    = form.label :enrollment_deadline, class: 'form-label'
+    = form.date_field :enrollment_deadline, class: 'form-control'
+
+  .mb-3 
+    = form.label :banner, class: 'form-label'
+    = form.file_field :banner, class: 'form-control'
+
+  = form.submit class: 'btn btn-primary'
+  = link_to t('helpers.button.back'), back_path, class: 'btn btn-secondary'

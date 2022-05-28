@@ -1,0 +1,22 @@
+- if @courses.empty?
+  %h3= t('.empty')
+-else
+  .card.mb-3
+    .card-body 
+      %h3.card-title= Course.model_name.human(count: 2)
+      %table.table
+        %thead
+          %tr
+            %th{scope: 'col'}= Course.human_attribute_name('name')
+            %th{scope: 'col'}= Course.human_attribute_name('description')
+            %th{scope: 'col'}= Course.human_attribute_name('price')
+        %tbody
+          - @courses.each do |course|
+            %tr
+              %td= link_to course.name, admin_course_path(course)
+              %td= course.description
+              %td= number_to_currency course.price
+
+
+= link_to t('.register'), new_admin_course_path, class: 'btn btn-primary'
+= link_to t('helpers.button.back'), root_path, class: 'btn btn-secondary'
